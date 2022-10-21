@@ -5,7 +5,7 @@ categories: [TOP_CATEGORIE, SUB_CATEGORIE]
 tags: [error_fix]     
 ---
 
->#PROBLEM DESCRIPTION
+# PROBLEM DESCRIPTION
 
 This kind of error comes up when you dont have the latest version of OPEN_CL installed or maybe there is a lack of LLVM 4.0 on your system.
 
