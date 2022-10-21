@@ -21,9 +21,9 @@ timezone: Madrid/Europe
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Just testing                          # the main title
+title: Vic's Blog                          # the main title
 
-tagline: Test tagline   # it will display as the sub-title
+tagline: Junior Pentester   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
  
