@@ -24,15 +24,17 @@ Device #1: Kernel /usr/share/hashcat/OpenCL/shared.cl build failed.
 
 We have to follow these steps:
 
-1. Go to http://registrationcenter-download.intel.com/akdlm/irc_nas/12556/opencl_runtime_16.1.2_x64_rh_6.4.0.37.tgz and download the file into any directory in your system 
+> 1. Go to http://registrationcenter-download.intel.com/akdlm/irc_nas/12556/opencl_runtime_16.1.2_x64_rh_6.4.0.37.tgz and download the file into any directory in your system 
 {: .prompt-tip}
 
-2. tar -vxf (name_of_the_file_you_just_downloaded) 
+> 2. tar -vxf (name_of_the_file_you_just_downloaded) 
 {: .prompt-tip} 
 
-3. cd (name_of_the_file_you_just_downloaded) 
-{: .prompt-tip}   
+> 3. cd (name_of_the_file_you_just_downloaded) 
+{: .prompt-tip} 
 
-4. ./install.sh
+> 4. ./install.sh
+{: .prompt-tip}
 
-5. Follow the stepts, and then execute hashcat again. Now it should work.
+> 5. Follow the stepts, and then execute hashcat again. Now it should work.
+{: .prompt-tip}
