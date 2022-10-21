@@ -5,21 +5,21 @@ categories: [TOP_CATEGORIE, SUB_CATEGORIE]
 tags: [error_fix]     
 ---
 
-PROBLEM DESCRIPTION
+#PROBLEM DESCRIPTION
 
 This kind of error comes up when you dont have the latest version of OPEN_CL installed or maybe there is a lack of LLVM 4.0 on your system.
 
-PROBLEM SOLUTION
+#PROBLEM SOLUTION
 
 So if this error pops up when you try to execute "hashcat" on any file:
 
-clBuildProgram(): CL_BUILD_PROGRAM_FAILURE 
+>clBuildProgram(): CL_BUILD_PROGRAM_FAILURE 
 {: .prompt-danger }
 
-error: unknown target CPU 'generic' 
+>error: unknown target CPU 'generic' 
 {: .prompt-danger }
 
-Device #1: Kernel /usr/share/hashcat/OpenCL/shared.cl build failed. 
+>Device #1: Kernel /usr/share/hashcat/OpenCL/shared.cl build failed. 
 {: .prompt-danger }
 
 We have to follow these steps:
