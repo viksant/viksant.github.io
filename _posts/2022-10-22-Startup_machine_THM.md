@@ -176,7 +176,7 @@ from our website will think we are a joke! Now I dont know who it is, but Maya i
 ```
 Seems like we got an username: Maya, but for the moment we can't use it no where, so lets proceed to inyect the reverse shell
 
-We will use the a python reverse shell script, which is locate in /share/webshells/php, by uploading it to the webpage
+We will use the php reverse shell script, which is locate in /share/webshells/php, by uploading it to the webpage
 using the ftp server.
 
 >Make sure to cd into /ftp folder inside the ftp server, otherwise you wont be able to upload the file
