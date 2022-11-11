@@ -62,7 +62,7 @@ We can run the script with the following command:
 ```bash
 python3 file_name.py target_ip
 ```
->Now we can submit user flag
+>Now we can submit the user flag
 {: .prompt-info}
 
 Now, all we gotta do is:

