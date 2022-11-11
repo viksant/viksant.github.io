@@ -44,8 +44,6 @@ def getAccess():
 
     r = requests.post(main_url, data=data_post, headers=header)
     
-    return r
-
 if __name__ == '__main__':
 
     try:
