@@ -1,5 +1,5 @@
 ---
-title: Validation Machine HackTheBox
+title: Bashed Machine HackTheBox
 date: 2022-11-11 00:22:25 +0800
 categories: [TOP_CATEGORIE, SUB_CATEGORIE]
 tags: [machines]
@@ -7,7 +7,7 @@ tags: [machines]
 
 # Description 
 
-This machine will be pwned with a simple script, and a easy Priv Escalation
+This machine will be pwned with a simple script, and an easy Priv Escalation.
 
 >So lets run the following script, which will get us into the machine and report us the flag
 {: .prompt-tip}
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     shell.sendline("cat user.txt")
     shell.interactive()
 ```
-We can run the command with the following command:
+We can run the script with the following command:
 
 ```bash
 python3 file_name.py target_ip
@@ -76,8 +76,8 @@ echo "import os os.system("chmod u+s /bin/bash")" > test.py
 ```
 But why?
 
-Well, in /scripts we can see 2 files: test.txt and test.py, from where the text.py text is moved written to test.py,
-so we can make /bin/bash a SUID
+Well, in /scripts we can see 2 files: test.txt and test.py, from where the text.py text is moved written to test.py, so we can make /bin/bash a SUID.
+If we ls -l, we can see test.txt is owned by root, se we can assum that anything inside test.py will also be run as root.
 
 If we now wait 1 min, we can run:
 ```bash
