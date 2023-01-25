@@ -7,7 +7,7 @@ tags: [machines]
 
 # Description
 
-In this machine we will learn how to get a reverse shell throught a webshell
+In this machine we will learn how to get a reverse shell throught a webshell and many more:
 
 # Enumeration
 
