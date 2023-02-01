@@ -28,7 +28,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Sun Jan 29 13:11:36 2023 -- 1 IP address (1 host up) scanned in 8.57 seconds
 ```
 
-So let's fuzz it. Using dirbuster, we didn't find any subdomains. Let's try looking for files on it.
+Now let's fuzz it. Using dirbuster, we didn't find any subdomains. Let's try looking for files on it.
 
 ```shell
 wfuzz -c --hc=404 -t 200 -w /usr/share/wordlists/wfuzz/general/medium.txt http://10.129.228.21/FUZZ/
