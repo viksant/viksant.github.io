@@ -80,4 +80,3 @@ We go to investigate the source code of the page. Luckily we find a comment that
 
 Looking for files with SUID permission, we find `/var/htb/bin/emergency ` which if we execute it, makes us root and we can see the root flag.
 
-Translated with www.DeepL.com/Translator (free version)
