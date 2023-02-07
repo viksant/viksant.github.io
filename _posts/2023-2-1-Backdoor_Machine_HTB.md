@@ -42,7 +42,7 @@ Which abuses the path traversal to list files:
 Once we run the command, we can now download and view /etc/passwd. 
 
 Using the same command, we can view the wp-config.php, from which we can get the following information:
-```mysql
+```sql
 define( 'DB_NAME', 'wordpress' );
 /** MySQL database username */
 define( 'DB_USER', 'wordpressuser' );
