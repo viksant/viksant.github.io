@@ -72,7 +72,7 @@ openssl openssl pkcs12 -in legacyy_dev_auth.pfx -nokeys -out cert.pem
 ```
 
 And as port 5985 is open, let's connect via WinRM to the victim machine
-````shell
+```shell
 evil-winrm -i 10.129.165.115 -c cert.pem -k priv-key.pem -S
 ```
 
