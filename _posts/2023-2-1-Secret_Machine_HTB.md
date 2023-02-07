@@ -1,5 +1,5 @@
 ---
-title: Secret Hunter Machine HTB
+title: Secret Machine HTB
 date: 2023-02-1 00:18:00 +0700
 categories: [TOP_CATEGORIE, SUB_CATEGORIE]
 tags: [machines]
