@@ -64,7 +64,7 @@ Also note the presence of port 5000, which we cannot access at the moment.
 
 If we access the domain, we can see how we are facing a voting system created in PHP, so let's look for an exploit:
 
-Luckily we found a python script that allows us to change the password to the admin user: `php/webapps/49843.txt.
+Luckily we found a SQL inejction that allows us to bypass the authentication process: `php/webapps/49843.txt.
 
 Which says that if we put the following payload in the login window of /admin/: 
 
