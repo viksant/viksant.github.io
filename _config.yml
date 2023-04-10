@@ -199,3 +199,11 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+index_pages:
+  posts:
+    title: Post Listing Page Title
+    excerpt: Post listing page excerpt
+    per_page: 20
+    permalink: /blog/
+    layout: blog
